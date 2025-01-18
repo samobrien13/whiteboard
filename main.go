@@ -53,6 +53,8 @@ func initInertia() *inertia.Inertia {
 			}
 			return url + entry, nil
 		})
+
+		i.ShareTemplateData("hmr", true)
 		return i
 	}
 
