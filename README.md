@@ -4,24 +4,26 @@ This is a template for start using the [Golang Inertia Adapter](https://github.c
 
 This is inspired by [Vue Example w/ Gonertia](https://github.com/henrriusdev/gonertia_vue_example)
 
-## Instruction
+## Install
 
-1. Install dependencies
+```sh
+npm install # or yarn
+go mod tidy
+```
 
-    ```sh
-    yarn
-    go mod tidy
-    ```
-2. Watch for changes in frontend code
+## Development 
 
-    ```sh
-    yarn build-watch
-    ```
-3. In a separate terminal, watch for changes in backend code
+1. Run the vite dev server
 
-    ```sh
-    air
-    ```
+```sh
+npm run dev
+```
+    
+3. In a separate terminal, watch for changes in backend
+
+```sh
+air
+```
 
 ## How to contribute
 
