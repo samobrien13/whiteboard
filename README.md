@@ -11,14 +11,14 @@ npm install # or yarn
 go mod tidy
 ```
 
-## Development 
+## Development
 
 1. Run the vite dev server
 
 ```sh
 npm run dev
 ```
-    
+
 3. In a separate terminal, watch for changes in backend
 
 ```sh
