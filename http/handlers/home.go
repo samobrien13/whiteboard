@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 
-	inertia "github.com/romsar/gonertia"
+	inertia "github.com/romsar/gonertia/v2"
 )
 
 func HomeHandler(i *inertia.Inertia) http.Handler {

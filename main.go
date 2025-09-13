@@ -10,7 +10,7 @@ import (
 	"strings"
 	"whiteboard/http/handlers"
 
-	inertia "github.com/romsar/gonertia"
+	inertia "github.com/romsar/gonertia/v2"
 )
 
 func main() {
