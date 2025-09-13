@@ -1,4 +1,4 @@
-module vuego
+module whiteboard
 
 go 1.25
 

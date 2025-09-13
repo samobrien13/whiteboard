@@ -8,6 +8,7 @@ import (
 	"os"
 	"path"
 	"strings"
+	"whiteboard/http/handlers"
 
 	inertia "github.com/romsar/gonertia"
 )
@@ -17,7 +18,7 @@ func main() {
 
 	mux := http.NewServeMux()
 
-	mux.Handle("/home", i.Middleware(homeHandler(i)))
+	mux.Handle("/", i.Middleware(handlers.HomeHandler(i)))
 	mux.Handle("/build/", http.StripPrefix("/build/", http.FileServer(http.Dir("./public/build"))))
 
 	http.ListenAndServe(":8000", mux)
@@ -112,24 +113,4 @@ func vite(manifestPath, buildDir string) func(path string) (string, error) {
 		}
 		return "", fmt.Errorf("asset %q not found", p)
 	}
-}
-
-func homeHandler(i *inertia.Inertia) http.Handler {
-	fn := func(w http.ResponseWriter, r *http.Request) {
-		err := i.Render(w, r, "Home/Index", inertia.Props{
-			"text": "Inertia.js with React and Go! 💚",
-		})
-		if err != nil {
-			handleServerErr(w, err)
-			return
-		}
-	}
-
-	return http.HandlerFunc(fn)
-}
-
-func handleServerErr(w http.ResponseWriter, err error) {
-	log.Printf("http error: %s\n", err)
-	w.WriteHeader(http.StatusInternalServerError)
-	w.Write([]byte("server error"))
 }
