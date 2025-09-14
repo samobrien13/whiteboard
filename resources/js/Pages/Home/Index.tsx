@@ -49,18 +49,10 @@ export default function Home() {
             <textarea
                 value={boardContent}
                 onChange={handleContentChange}
-                style={{ width: '50%', height: '100%', padding: '10px' }}
+                className="w-1/2 h-full p-4"
                 placeholder="Start typing your markdown here..."
             />
-            <div
-                style={{
-                    width: '50%',
-                    height: '100%',
-                    padding: '10px',
-                    borderLeft: '1px solid #ccc',
-                    overflowY: 'auto',
-                }}
-            >
+            <div className="w-1/2 h-full border-l border-gray-300 overflow-y-auto p-4">
                 <ReactMarkdown rehypePlugins={[rehypeRaw]}>
                     {boardContent}
                 </ReactMarkdown>
