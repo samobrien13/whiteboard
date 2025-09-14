@@ -9,19 +9,30 @@ import (
 	"path"
 	"strings"
 	"whiteboard/http/handlers"
+	"whiteboard/websockets"
 
 	inertia "github.com/romsar/gonertia/v2"
 )
 
 func main() {
+	hub := websockets.NewHub()
+	go hub.Run()
+
 	i := initInertia()
 
 	mux := http.NewServeMux()
 
 	mux.Handle("/", i.Middleware(handlers.HomeHandler(i)))
 	mux.Handle("/build/", http.StripPrefix("/build/", http.FileServer(http.Dir("./public/build"))))
+	mux.HandleFunc("/ws", func(w http.ResponseWriter, r *http.Request) {
+		websockets.ServeWs(hub, w, r)
+	})
 
-	http.ListenAndServe(":8000", mux)
+	log.Println("Server starting on port 8000...")
+	err := http.ListenAndServe(":8000", mux)
+	if err != nil {
+		log.Fatal("ListenAndServe: ", err)
+	}
 }
 
 func initInertia() *inertia.Inertia {

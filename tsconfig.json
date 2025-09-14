@@ -1,10 +1,16 @@
 {
     "compilerOptions": {
         "baseUrl": ".",
+        "esModuleInterop": true,
         "jsx": "react",
         "paths": {
-            "@/*": ["resources/js/*"]
+            "@/*": [
+                "resources/js/*"
+            ]
         }
     },
-    "exclude": ["node_modules", "public/build"]
+    "exclude": [
+        "node_modules",
+        "public/build"
+    ]
 }
