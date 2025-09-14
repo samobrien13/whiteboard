@@ -45,7 +45,7 @@ export default function Home() {
     };
 
     return (
-        <div style={{ display: 'flex', height: '100vh' }}>
+        <div className="flex h-svh">
             <textarea
                 value={boardContent}
                 onChange={handleContentChange}
